@@ -21,7 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/show/model/{id}', [ModelController::class, 'show']);
+Route::prefix('models')->group(function () {
+    Route::get('/', [ModelController::class, 'index']);
+    Route::post('/', [ModelController::class, 'store']);
+    Route::get('/show/{id}', [ModelController::class, 'show']);
+});
 
 Route::get('/cell_types', [AttributesController::class, 'cell_types']);
 Route::get('/circuit_types', [AttributesController::class, 'circuit_types']);

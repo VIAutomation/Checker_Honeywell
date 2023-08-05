@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/models', [App\Http\Controllers\HomeController::class, 'models'])->name('models');
+Route::get('/models/{id}/edit', [App\Http\Controllers\HomeController::class, 'model_edit']);
